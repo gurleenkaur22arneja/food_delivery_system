@@ -1,5 +1,5 @@
 // client/src/pages/OrderHistoryPage.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axiosInstance from '../axiosConfig';
 import { useAuth } from '../context/AuthContext';
 import OrderCard from '../components/OrderCard';
@@ -23,21 +23,7 @@ const OrderHistoryPage = () => {
 	const [assignError, setAssignError] = useState('');
 	const [assignSuccess, setAssignSuccess] = useState('');
 
-
-	useEffect(() => {
-		if (user) {
-			fetchOrders();
-			// Fetch delivery personnel list if the user is an owner or admin
-			if (user.role === 'restaurant_owner' || user.role === 'admin') {
-				fetchDeliveryPersonnel();
-			}
-		} else {
-			setError('Please log in to view your orders.');
-			setLoading(false);
-		}
-	}, [user]);
-
-	const fetchOrders = async () => {
+	const fetchOrders = useCallback(async () => {
 		setLoading(true);
 		setError('');
 		try {
@@ -50,9 +36,9 @@ const OrderHistoryPage = () => {
 		} finally {
 			setLoading(false);
 		}
-	};
+	},[user.token]);
 
-	const fetchDeliveryPersonnel = async () => {
+	const fetchDeliveryPersonnel = useCallback(async () => {
 		try {
 			const res = await axiosInstance.get('/api/auth/delivery-personnel', {
 				headers: { Authorization: `Bearer ${user.token}` },
@@ -62,7 +48,7 @@ const OrderHistoryPage = () => {
 			console.error('Failed to fetch delivery personnel:', err);
 			// Optionally set an error state here
 		}
-	};
+	},[user.token]);
 
 	const handleUpdateOrderStatus = async (orderId, newStatus) => {
 		if (!window.confirm(`Are you sure you want to change order status to "${newStatus.replace(/_/g, ' ')}"?`)) return;
@@ -95,6 +81,19 @@ const OrderHistoryPage = () => {
 			setLoading(false);
 		}
 	};
+
+	useEffect(() => {
+		if (user) {
+			fetchOrders();
+			// Fetch delivery personnel list if the user is an owner or admin
+			if (user.role === 'restaurant_owner' || user.role === 'admin') {
+				fetchDeliveryPersonnel();
+			}
+		} else {
+			setError('Please log in to view your orders.');
+			setLoading(false);
+		}
+	}, [user, fetchOrders, fetchDeliveryPersonnel]);	
 
 	const handleRateOrder = (order) => {
 		setSelectedOrderToReview(order);

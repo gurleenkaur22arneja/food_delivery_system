@@ -1,5 +1,5 @@
 // client/src/pages/DeliveryDashboard.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axiosInstance from '../axiosConfig';
 import { useAuth } from '../context/AuthContext';
 import OrderCard from '../components/OrderCard';
@@ -9,17 +9,9 @@ const DeliveryDashboard = () => {
 	const [deliveryOrders, setDeliveryOrders] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
-
-	useEffect(() => {
-		if (user && user.role === 'delivery_personnel') {
-			fetchDeliveryOrders();
-		} else {
-			setError('Access Denied: You must be a delivery personnel to view this page.');
-			setLoading(false);
-		}
-	}, [user]);
-
-	const fetchDeliveryOrders = async () => {
+ 
+	console.log("test");
+	const fetchDeliveryOrders = useCallback(async () => {
 		setLoading(true);
 		setError('');
 		try {
@@ -32,7 +24,7 @@ const DeliveryDashboard = () => {
 		} finally {
 			setLoading(false);
 		}
-	};
+	},[user.token]);
 
 	const handleUpdateOrderStatus = async (orderId, newStatus) => {
 		if (!window.confirm(`Are you sure you want to change order status to "${newStatus.replace(/_/g, ' ')}"?`)) return;
@@ -49,6 +41,15 @@ const DeliveryDashboard = () => {
 			setLoading(false);
 		}
 	};
+	
+	useEffect(() => {
+		if (user && user.role === 'delivery_personnel') {
+			fetchDeliveryOrders();
+		} else {
+			setError('Access Denied: You must be a delivery personnel to view this page.');
+			setLoading(false);
+		}
+	}, [user, fetchDeliveryOrders]);	
 
 	if (loading) {
 		return <div className="text-center mt-8 text-lg">Loading delivery dashboard...</div>;

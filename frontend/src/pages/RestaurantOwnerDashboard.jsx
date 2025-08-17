@@ -1,5 +1,5 @@
 // client/src/pages/RestaurantOwnerDashboard.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axiosInstance from '../axiosConfig';
 import { useAuth } from '../context/AuthContext';
 import RestaurantForm from '../components/RestaurantForm';
@@ -18,16 +18,7 @@ const RestaurantOwnerDashboard = () => {
 	const [showMenuItemForm, setShowMenuItemForm] = useState(false);
 	const [editingMenuItem, setEditingMenuItem] = useState(null);
 
-	useEffect(() => {
-		if (user && user.role === 'restaurant_owner') {
-			fetchOwnerData();
-		} else {
-			setError('Access Denied: You must be a restaurant owner to view this page.');
-			setLoading(false);
-		}
-	}, [user]);
-
-	const fetchOwnerData = async () => {
+	const fetchOwnerData = useCallback(async () => {
 		setLoading(true);
 		setError('');
 		try {
@@ -46,7 +37,16 @@ const RestaurantOwnerDashboard = () => {
 		} finally {
 			setLoading(false);
 		}
-	};
+	},[user.token]);
+
+	useEffect(() => {
+		if (user && user.role === 'restaurant_owner') {
+			fetchOwnerData();
+		} else {
+			setError('Access Denied: You must be a restaurant owner to view this page.');
+			setLoading(false);
+		}
+	}, [user, fetchOwnerData]);	
 
 	const fetchMenuItems = async (restaurantId) => {
 		try {
