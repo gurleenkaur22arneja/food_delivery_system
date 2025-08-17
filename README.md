@@ -69,8 +69,6 @@ We will send you an email to choose a Real-World project. If you face any diffic
 * Deploy the frontend to AWS.
 * Document your CI/CD workflow in the README.
 
----
-
 **Submission Requirements**
 
 **A report **contains** the following (Provide screenshots as evidence for each implemented task. **The screenshot should **contain** your username** from JIRA, GITHUB, and AWS**):
