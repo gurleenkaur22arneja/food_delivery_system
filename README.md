@@ -1,94 +1,121 @@
+# Full-Stack [Your Application Name] Management System
 
-**Assessment 1 (Total Marks **20**)**
+## Project Overview
 
-Assignment: **Software requirements analysis and design (**Full-Stack CRUD Application Development with DevOps Practices**)**
+This project is a full-stack web application designed to manage **[Briefly describe what your application manages, e.g., "product inventory", "student records", "task assignments"]**. It demonstrates robust CRUD (Create, Read, Update, Delete) operations, secure user authentication, and adherence to modern DevOps practices.
 
+The application is built with a Node.js and Express.js backend API, a dynamic React.js frontend, and uses MongoDB for data persistence. The entire software development lifecycle, from project management with JIRA to automated deployment via GitHub Actions to an AWS EC2 instance, has been meticulously implemented.
 
----
+## Live Application
 
-**Objective**
+You can access the deployed application via the following URL:
 
-You have been provided with a starter project that includes user authentication using Node.js, React.js, and MongoDB. Your task is to extend this application by implementing CRUD (Create, Read, Update, Delete) operations of different featuresfor a real-world application of your choice, while following industry best practices such as: 
+*   **Public URL**: `[Your Deployed Application URL Here]`
 
-* **Project Management with JIRA**
-* **Requirement Diagram**, **Block Definition Diagram (**BDD), Parametric Diagram using**SysML**
-* **Version Control using GitHub**
-* **CI/CD Integration for Automated Deployment**
+### Access Credentials (for demonstration)
 
----
+To access the dashboard and explore the application's features, you may use the following demonstration credentials:
 
-**GitHub link of the starter project: **[https://github.com/rajuiit/sdlapps](https://github.com/rajuiit/sdlapps)
+*   **Role**: Restaurent Owner
+*   **Username**: gurleen@gmail.com
+*   **Password**: 1234
 
----
+*   **Role**: Delivery Agent
+*   **Username**: derrick@gmail.com
+*   **Password**: 1234
 
-**Requirement**
+*   **Role**: CUstomer
+*   **Username**: gurleen1@gmail.com
+*   **Password**: 1234
 
-1. **Choose a Real-World Application**
+*Note: These credentials are provided for initial review. We encourage you to register a new account to experience the full user registration and login flow.*
 
-We will send you an email to choose a Real-World project. If you face any difficulties in choosing your project, please contact your tutor.
+## Key Features
 
-2. **Project Design with SysML and Project Management with JIRA**
+*   **User Authentication**: Secure user registration, login, and session management using JSON Web Tokens (JWT).
+*   **[Your Chosen Entity] Management**: Comprehensive CRUD operations (Create, Read, Update, Delete)
+*   **Secure API Endpoints**: All data manipulation operations are protected, ensuring only authenticated users can perform actions.
+*   **Responsive User Interface**: A user-friendly and intuitive interface built with React.js.
+*   **Automated CI/CD Pipeline**: Seamless and continuous deployment to AWS EC2 via GitHub Actions.
 
-* Draw a requirements diagram, Block Definition Diagram (BDD), and Parametric Diagram based on your project (Connect all functional features).
-* Create a JIRA project and define:
-  * Epic
-  * User Stories (features required in your app)
-  * Child issues or Subtasks (breaking down development work)
-  * Sprint Implementation (organizing work into milestones)
-* Provide your JIRA board URL in the project README.
+## Technologies Used
 
-**3. Backend Development (Node.js + Express + MongoDB)**
+### Backend
+*   **Runtime**: Node.js
+*   **Framework**: Express.js
+*   **Database ODM**: Mongoose (for MongoDB interaction)
+*   **Authentication**: JSON Web Tokens (JWT), bcryptjs (for password hashing)
 
-* Set up and configure the MongoDB database connection.
-* Implement various backend functions for handling application data.Ensure that all functions are compatible with an Application Programming Interface (API) structure(Follow existing patterns used in the Task Manager App where applicable).
-* Implement CRUD operations forcreating, reading, updating, and deleting records for each functionality.
+### Frontend
+*   **Library**: React.js
+*   **Routing**: React Router DOM
+*   **HTTP Client**: Axios
 
-4. **Frontend Development (React.js)**
+### Database
+*   **NoSQL Database**: MongoDB
 
-* Create a user-friendly interface to interact with your API endpoint (Follow task manager app).
-* Implement different forms for adding, updating, and deleting records.
-* Display data using tables, cards, or lists (Follow how we showed data in task manager app, try to implement better visualization for the frontend.)
+### DevOps & Project Management
+*   **Project Management**: JIRA
+*   **Version Control**: Git, GitHub
+*   **Continuous Integration/Continuous Deployment (CI/CD)**: GitHub Actions
+*   **Deployment Target**: AWS EC2 Instance
+*   **Process Manager**: PM2 (for Node.js application management on EC2)
 
-**5. Authentication & Authorization** (Prerequisite Task)
+## Project Management
 
-* Ensure only authenticated users can access and perform CRUD operations. (Already developed in your project)
-* Use JWT (JSON Web Tokens) for user authentication (Use the task manager one from .env file).
+Our project development was meticulously managed using JIRA. You can review the project's epics, user stories, sub-tasks, and sprint progress here:
 
-**6. GitHub Version Control & Branching Strategy**
+*   **JIRA Board URL**: https://gurleenarneja705.atlassian.net/jira/software/projects/FDS/boards/34
 
-* Use GitHub for version control and maintain:
-* main branch (stable production-ready code)
-* Feature branches for each new feature
-* Follow proper commit messages and pull request (PR) for code reviews.
+## Repository Structure
 
-**7. CI/CD Pipeline Setup**
+This repository is organised into two main directories:
 
-* Implement a CI/CD pipeline using GitHub Actions to:
-* Automatically run tests on every commit/pull request (Optional).
-* Deploy the backend to AWS. (Use the QUT provided EC2 instance)
-* Deploy the frontend to AWS.
-* Document your CI/CD workflow in the README.
+*   **Backend**: Contains the Node.js/Express.js API.
+    *   **Link**: https://github.com/gurleenkaur22arneja/food_delivery_system/tree/main/backend
+*   **Frontend**: Contains the React.js user interface.
+    *   **Link**: https://github.com/gurleenkaur22arneja/food_delivery_system/tree/main/frontend
 
----
+## Getting Started (Local Development)
 
-**Submission Requirements**
+To set up and run this project on your local machine, please follow these instructions:
 
-**A report **contains** the following (Provide screenshots as evidence for each implemented task. **The screenshot should **contain** your username** from JIRA, GITHUB, and AWS**):
+### Prerequisites
 
-* **JIRA Project **Management**(Provide screenshots in the **report o**f at least two epics**, **including user story, sub**t**a**sks**. **Please **don’t** provide **the **U**ser Authentication** epic**.**Provide your JIRA Board URL in the report and README file as well.**Through the JIRA Board, we will systematically review the completeness of the project features, organised under Epics, User Stories, and Sub-tasks.**
-* Requirement diagram, Block Definition Diagram (BDD), Parametric Diagram (Using project features).
-* **GitHub Repository (backend/ and frontend/)** link. We will **review** your code implementation, which you followed from the task description. We will also **review** your commits, main branch, feature branches, and pull requests. **(**Please note that the authorisation** (Log In, Registration)** is the prerequisite for backend development.**)**
-* CI/CD pipeline details step by step screenshot.
-* README.md with:
-* Project setup instructions.
-* Public URL of your project.
-* Provide a project-specific username and password if we need to access your dashboard.
+Ensure you have the following installed:
 
----
+*   **Node.js**: Version 18 or higher (LTS recommended).
+*   **npm** or **Yarn**: A package manager for Node.js.
+*   **MongoDB**: A running instance (local or cloud-based like MongoDB Atlas).
+*   **Git**: For cloning the repository.
 
-**Assessment Criteria:**
+### 1. Clone the Repository
 
-* Clarity and completeness of Jira board and SysML models.
-* Adherence to Git best practices and practical contributions.
-* Successful implementation, deploymentand CI/CD pipeline.
-* Problem-solving skills and the ability to go beyond basic requirements.
+First, clone the project repository to your local machine:
+The frontend application will be accessible in your web browser at `http://localhost:3000`.
+
+## CI/CD Pipeline
+
+This project features a robust Continuous Integration and Continuous Deployment (CI/CD) pipeline implemented using **GitHub Actions**. This pipeline automates the process of testing and deploying the application to an AWS EC2 instance, ensuring rapid and reliable updates.
+
+### Workflow Overview
+
+The CI/CD workflow is triggered on every push to the `main` branch and performs the following steps:
+
+1.  **Checkout Code**: Fetches the latest code from the GitHub repository.
+2.  **Setup Node.js**: Configures the appropriate Node.js environment on the self-hosted runner.
+3.  **Install Dependencies**: Installs all required Node.js packages for both the backend and frontend using Yarn.
+4.  **Build Frontend**: Creates an optimised production build of the React.js frontend application.
+5.  **Run Backend Tests**: Executes unit and integration tests for the backend to ensure code quality and functionality.
+6.  **Create `.env` File**: Dynamically constructs the `.env` file on the EC2 instance using sensitive environment variables securely stored as GitHub Secrets. This ensures the application has the correct configuration for the production environment.
+7.  **Deploy Application**:
+    *   Stops all running PM2 processes on the EC2 instance.
+    *   Ensures the latest code is in place.
+    *   Restarts all PM2-managed applications, allowing them to pick up the new code and the updated `.env` configuration.
+
+This automated process ensures that any changes pushed to the `main` branch are quickly and reliably deployed to the production environment, facilitating continuous delivery.
+
+## Author
+
+*   **Full Name**: Gurleen
+*   **Student ID**: [Your Student ID]
