@@ -3,6 +3,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AuthContext = createContext();
 
+
 export const AuthProvider = ({ children }) => {
 	// Initialize user from localStorage, if available
 	const [user, setUser] = useState(() => {
