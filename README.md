@@ -1,4 +1,4 @@
-# Full-Stack [Your Application Name] Management System
+# Full-Stack FoodieExpress( food delivery platform) Management System
 
 ## Project Overview
 
@@ -10,7 +10,7 @@ The application is built with a Node.js and Express.js backend API, a dynamic Re
 
 You can access the deployed application via the following URL:
 
-*   **Public URL**: `[Your Deployed Application URL Here]`
+*   **Public URL**: http://13.236.87.173:3000/
 
 ### Access Credentials (for demonstration)
 
