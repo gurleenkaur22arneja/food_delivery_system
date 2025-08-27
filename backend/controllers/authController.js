@@ -7,7 +7,7 @@ const generateToken = (id) => {
 	return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 };
 
-// @desc    Get all delivery personnel
+// @desc    Get all delivery personnel hhh
 // @route   GET /api/auth/delivery-personnel
 // @access  Private (Restaurant Owner, Admin)
 const getDeliveryPersonnel = async (req, res) => {
